@@ -10,16 +10,16 @@
         <title>GPGPU Offload Phase 1</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./theme/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+        <link href="./theme/css/clean-blog.min.css" rel="stylesheet">
 
         <!-- Code highlight color scheme -->
-            <link href="/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">
+            <link href="./theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">
 
             <!-- CSS specified by the user -->
-            <link href="/konsulko.css" rel="stylesheet">
+            <link href="./konsulko.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -49,13 +49,13 @@
 		<meta property="og:site_name" content="Konsulko Group">
 
 	<meta property="og:type" content="article">
-            <meta property="article:author" content="/author/matt-porter.html">
-	<meta property="og:url" content="/gpgpu-offload-phase-1.html">
+            <meta property="article:author" content="./author/matt-porter.html">
+	<meta property="og:url" content="./gpgpu-offload-phase-1.html">
 	<meta property="og:title" content="GPGPU Offload Phase 1">
 	<meta property="article:published_time" content="2016-09-15 10:50:00-04:00">
             <meta property="og:description" content="Overview As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation into the current state ...">
 
-            <meta property="og:image" content="//images/road-dual-screenshot.png">
+            <meta property="og:image" content=".//images/road-dual-screenshot.png">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Konsulko Group</a>
+                <a class="navbar-brand" href="./">Konsulko Group</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -93,7 +93,7 @@
                     <div class="post-heading">
                         <h1>GPGPU Offload Phase 1</h1>
                         <span class="meta">Posted by
-                                <a href="/author/matt-porter.html">Matt Porter</a>
+                                <a href="./author/matt-porter.html">Matt Porter</a>
                              on Thu 15 September 2016
                         </span>
                             <span class="meta">Updated on Thu 15 September 2016</span>
@@ -110,7 +110,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
     <!-- Post Content -->
     <article>
-        <html><body><div class="section" id="overview">
+        <body><div class="section" id="overview">
 <h2>Overview</h2>
 <p>As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation
 into the current state of GPGPU support including development, debug, and performance analysis tools
@@ -161,7 +161,7 @@ draws the detected boundaries on the video for output. The video handler compute
 per second values and draws the processed video frame before fetching another frame of
 input video.</p>
 <div class="figure" style="width: 677px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-dual-screenshot.png" style="width: 677px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-dual-screenshot.png" style="width: 677px; height: auto; max-width: 100%;"/>
 <p class="caption">LDWS in CUDA mode with dual lane test video</p>
 </div>
 <p>During development it was decided it was better to pull a Phase 2 requirement of CUDA support
@@ -175,7 +175,7 @@ LDWS prints the average FPS maintained during the entire run.</p>
 <li>Color conversion to <a class="reference external" href="https://en.wikipedia.org/wiki/Grayscale">grayscale</a> to reduce data set</li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_blur">Gaussian blur</a> to reduce image noise</li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny edge detector</a> to find all defined edges in the image</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Hough_transform">Hough transform</a> line detector to find all lines in the iamge</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Hough_transform">Hough transform</a> line detector to find all lines in the image</li>
 </ul>
 <p>LDWS leverages the lane detection algorithm implemented in the
 <a class="reference external" href="https://github.com/mylxiaoyi/opencv-lane-vehicle-track">opencv-lane-vehicle-track</a> project and the lane departure warning
@@ -191,11 +191,11 @@ of the lane.</p>
 during each step of the image processing sequence. These screenshots show the detected
 edges and lines, respectively, for one frame of video.</p>
 <div class="figure" style="width: 600px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-dual-intermediate-edges.png" style="width: 600px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-dual-intermediate-edges.png" style="width: 600px; height: auto; max-width: 100%;"/>
 <p class="caption">Canny edge detector output</p>
 </div>
 <div class="figure" style="width: 640px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-dual-intermediate-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-dual-intermediate-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
 <p class="caption">Hough transform line detector output</p>
 </div>
 </div>
@@ -206,13 +206,13 @@ system. Use of Canny edge and Hough line detection from a vehicle mounted camera
 is highly susceptible to shadows from trees and other overhead objects on the road as well as being poor in
 low-light or night conditions. Note the shadows in the following frame on a sunny day.</p>
 <div class="figure" style="width: 640px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-rt94-shadows-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-rt94-shadows-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
 <p class="caption">Road with shadows from overhead objects</p>
 </div>
 <p>Notice how the Canny edge detector finds the horizontal edge of the shadows in the region of
 interest.</p>
 <div class="figure" style="width: 520px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-rt94-shadows-edges.png" style="width: 520px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-rt94-shadows-edges.png" style="width: 520px; height: auto; max-width: 100%;"/>
 <p class="caption">Shadow lines from Canny edge detector</p>
 </div>
 <p>The lane detection algorithm itself assumes the vehicle
@@ -222,7 +222,7 @@ The result of all of these factors means that the application suffers from losin
 of lane markers in all but ideal conditions. The following is an example of it losing
 sync periodically.</p>
 <div class="figure" style="width: 677px; height: auto; max-width: 100%;">
-<img alt="" src="/images/road-dual-loss-of-sync.png" style="width: 677px; height: auto; max-width: 100%;"/>
+<img alt="" src="./images/road-dual-loss-of-sync.png" style="width: 677px; height: auto; max-width: 100%;"/>
 <p class="caption">LDWS loses sync, unable to detect the right lane marker</p>
 </div>
 <p>Functional improvements can be made by employing one or more of the following methodologies:</p>
@@ -314,7 +314,7 @@ of the display of each resulting frame to the UI and capture/decode of video fra
 feed. Since we are only concerned about the portion of our ADAS algorithms that could be offloaded to a GPU,
 we discard these areas as out-of-scope for this particular project. In a production system, we would avoid
 using inefficient OpenCV blending/drawing paths and would utilize hardware assisted decode of video frames.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -404,13 +404,13 @@ using inefficient OpenCV blending/drawing paths and would utilize hardware assis
                cv::arithm_op
                cv::hal::addWeighted8u
 </pre></div>
-</td></tr></table><p>Another way to visualize our CPU usage is in the following Flamegraph. Note that the widest elements in the graph are the hot
+</td></tr></tbody></table><p>Another way to visualize our CPU usage is in the following Flamegraph. Note that the widest elements in the graph are the hot
 spots in CPU utilization. If we again discard the video input and UI areas, it can be seen that the <strong>cv:HoughLinesProbabilistic()</strong>
 is the top offender. Just to the left, it can be seen that <strong>LaneDetector::ProcessLanes()</strong> is a close second. We know from our
 development of the lane detection algorithm that the <strong>ProcessLanes()</strong> functionality is not going to be offloaded as it is
 basic post processing of the lines gathered from the Hough transform.</p>
 <div class="figure" style="width: 1200px; height: auto; max-width: 100%;">
-<object data="/images/flamegraph-road-dual-cpu.svg" style="width: 1200px; height: auto; max-width: 100%;" type="image/svg+xml">
+<object data="./images/flamegraph-road-dual-cpu.svg" style="width: 1200px; height: auto; max-width: 100%;" type="image/svg+xml">
 </object>
 <p class="caption">Dual lane CPU Flamegraph</p>
 </div>
@@ -418,17 +418,17 @@ basic post processing of the lines gathered from the Hough transform.</p>
 results seen in the following diagram. Once again, excluding those paths on the right that are out-of-scope, we can clearly see that
 <strong>cv::HoughLinesProbabilistic</strong> is a great place to focus on performance improvements.</p>
 <div class="figure" style="width: 630ptpx; height: auto; max-width: 100%;">
-<object data="/images/callgraph-road-dual-cpu.svg" style="width: 630ptpx; height: auto; max-width: 100%;" type="image/svg+xml">
+<object data="./images/callgraph-road-dual-cpu.svg" style="width: 630ptpx; height: auto; max-width: 100%;" type="image/svg+xml">
 </object>
 <p class="caption">Dual lane CPU Callgraph</p>
 </div>
 </div>
 </div>
-</body></html>
+</body>
     </article>
 
         <div class="tags">
-            <p>tags: <a href="/tag/adas.html">adas</a>, <a href="/tag/lane-detect.html">lane detect</a>, <a href="/tag/gpgpu.html">gpgpu</a>, <a href="/tag/cuda.html">cuda</a>, <a href="/tag/opencl.html">opencl</a></p>
+            <p>tags: <a href="./tag/adas.html">adas</a>, <a href="./tag/lane-detect.html">lane detect</a>, <a href="./tag/gpgpu.html">gpgpu</a>, <a href="./tag/cuda.html">cuda</a>, <a href="./tag/opencl.html">opencl</a></p>
         </div>
 
     <hr>
@@ -445,6 +445,14 @@ results seen in the following diagram. Once again, excluding those paths on the 
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://github.com/konsulko">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
                     </ul>
 <p class="copyright text-muted">
     Blog powered by <a href="http://getpelican.com">Pelican</a>,
@@ -455,13 +463,13 @@ results seen in the following diagram. Once again, excluding those paths on the 
     </footer>
 
     <!-- jQuery -->
-    <script src="/theme/js/jquery.js"></script>
+    <script src="./theme/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
 
         <!-- Custom Theme JavaScript -->
-        <script src="/theme/js/clean-blog.min.js"></script>
+        <script src="./theme/js/clean-blog.min.js"></script>
 
 </body>
 

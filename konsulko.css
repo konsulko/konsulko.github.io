@@ -6,7 +6,7 @@
 
 a:hover,
 a:focus {
-  color: blue !important;
+  color: #0085a1;
   text-decoration: underline !important;
 }
 
