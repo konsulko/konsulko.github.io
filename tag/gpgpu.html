@@ -1,201 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>Konsulko Group - gpgpu</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Konsulko Group - Tag gpgpu</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">
+
+            <!-- CSS specified by the user -->
+            <link href="/konsulko.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Konsulko Group">
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Konsulko Group </a></h1>
-                <nav><ul>
-                    <li><a href="/category/gpgpu.html">GPGPU</a></li>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Konsulko Group</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
                 </ul>
-                </nav>
-        </header><!-- /#banner -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/gpgpu-offload-phase-1.html">GPGPU Offload Phase 1</a></h1>
-<footer class="post-info">
-        <span>Mon 12 September 2016</span>
-        	<span>| by <a class="url fn" href="/author/matt-porter.html">Matt Porter</a></span>
-<span>| tags: <a href="/tag/adas.html">adas</a><a href="/tag/lane-detect.html">lane detect</a><a href="/tag/gpgpu.html">gpgpu</a><a href="/tag/cuda.html">cuda</a><a href="/tag/opencl.html">opencl</a></span>
-</footer><!-- /.post-info --><html><body><div class="section" id="overview">
-<h2>Overview</h2>
-<p>As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting as investigation
-into the current state of GPGPU support including development, debug, and performance analysis tools
-starting with Nvidia GPUs. One of the first things we wanted to do was produce and open source test
-application that has some of the charactersitics of a typical production ADAS application. Since there
-is a lot of public research into lane detection and warning systems as well as some bits of free software
-available to leverage in implementation, we chose to make a simple Lane Departure Warning System (LDWS)
-application.</p>
-</div>
-<div class="section" id="ldws">
-<h2>LDWS</h2>
-<p><em>LDWS description and features</em></p>
-</div>
-<div class="section" id="performance">
-<h2>Performance</h2>
-<div class="section" id="background">
-<h3>Background</h3>
-<p><em>Describe three modes of operation and limits of tools.</em></p>
-</div>
-<div class="section" id="summary">
-<h3>Summary</h3>
-<p><em>Explain perf stat CPU utilization and in-app FPS figures.</em></p>
-<p>
-<div class="justtable">
-    <table>
-        
-        <caption> <strong>LDWS Performance</strong> </caption>
-        
-        
-        <thead>
-        <tr>
-            
-            
-            <th>Mode</th>
-            
-            <th>CPU%</th>
-            
-            <th>FPS</th>
-            
-        </tr>
-        </thead>
-        
-        <tbody>
-            
-            <tr>
-                
-                
-                <td>CPU</td>
-                
-                <td>87.2</td>
-                
-                <td>339.3</td>
-                
-            </tr>
-            
-            <tr>
-                
-                
-                <td>CUDA</td>
-                
-                <td>87.2</td>
-                
-                <td>359.8</td>
-                
-            </tr>
-            
-            <tr>
-                
-                
-                <td>OpenCL</td>
-                
-                <td>195.4</td>
-                
-                <td>235.0</td>
-                
-            </tr>
-            
-        </tbody>
-    </table>
-</div></p>
-</div>
-<div class="section" id="analysis">
-<h3>Analysis</h3>
-<p>The basis of our performance analysis centers around statistical sampling using the Linux perf tool.
-We start by examining the CPU mode case in the following perf report fragment. The important aspect to
-note is the <em>top offender</em> in our application with is the call to <strong>cv::HoughLinesProbabilistic</strong>. That
-is by far the biggest consumer of CPU cycles in the application. This is completely expected as our lane
-detection algorithm heavily relies on detecting all lines in each frame of the video feed. You may notice
-other curious consumers of CPU time in <strong>libQt5Gui</strong> and <strong>libavcodec-ffmpeg.so</strong>. These are all products
-of the display of each resulting frame to the UI and capture/decode of video frames from our source video
-feed. Since we are only concerned about the portion of our ADAS algorithms that could be offloaded to a GPU,
-we discard these areas as out-of-scope for this particular project. In a production system, we would avoid
-using inefficient OpenCV blending/drawing paths and would utilize hardware assisted decode of video frames.</p>
-<div class="highlight"><pre><span></span><span class="c1">#       Overhead       Samples  Command / Shared Object / Symbol</span>
-<span class="c1"># ............................  ...................................................................................................................................................</span>
-<span class="c1">#</span>
-    99.67%          <span class="m">5551</span>        ldws
-       32.34%          <span class="m">1441</span>        libopencv_imgproc.so.3.1.0
-          21.51%           <span class="m">856</span>        <span class="o">[</span>.<span class="o">]</span> cv::HoughLinesProbabilistic
-            <span class="p">|</span>
-             --21.48%--_start
-                       __libc_start_main
-                       main
-                       cv::HoughLinesP
-                       cv::HoughLinesProbabilistic
+        <header class="intro-header" style="background-image: url('images/lab-bench1.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Tag gpgpu</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-           2.40%           <span class="m">252</span>        <span class="o">[</span>.<span class="o">]</span> cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator<span class="o">()</span>
-            <span class="p">|</span>
-            ---__clone
-               start_thread
-               cv::ForThread::thread_loop_wrapper
-               cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator<span class="o">()</span>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-preview">
+            <a href="/gpgpu-offload-phase-1.html" rel="bookmark" title="Permalink to GPGPU Offload Phase 1">
+                <h2 class="post-title">
+                    GPGPU Offload Phase 1
+                </h2>
+            </a>
+                <p class="article-summary">
+                    Overview As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation into the current state ...
+                </p>
+            <p class="post-meta">Posted by
+                    <a href="/author/matt-porter.html">Matt Porter</a>
+                 on Thu 15 September 2016
+            </p>
+        </div>
 
-           2.11%            <span class="m">77</span>        <span class="o">[</span>.<span class="o">]</span> cv::FillConvexPoly
-            <span class="p">|</span>
-             --2.06%--_start
-                       __libc_start_main
-                       main
+            </div>
+        </div>
+    </div>
 
-       28.67%          <span class="m">1048</span>        libQt5Gui.so.5.6.1
-           2.54%            <span class="m">91</span>        <span class="o">[</span>.<span class="o">]</span> 0x00000000002f3a13
-            <span class="p">|</span>
-            ---0x7f0b431dfb26
-               0x7f0b431e3012
-               0x7f0b431bca13
+    <hr>
 
-       12.49%           <span class="m">765</span>        libavcodec-ffmpeg.so.56.60.100
-                                      no entry &gt;<span class="o">=</span> 2.00%
-        5.12%           <span class="m">204</span>        libopencv_core.so.3.1.0
-           4.55%           <span class="m">164</span>        <span class="o">[</span>.<span class="o">]</span> cv::hal::addWeighted8u
-            <span class="p">|</span>
-            ---_start
-               __libc_start_main
-               main
-               LaneDetector::ProcessLanes
-               cv::addWeighted
-               cv::arithm_op
-               cv::hal::addWeighted8u
-</pre></div>
-<p>Another way to visualize our CPU usage is the Flamegraph in Figure 1. Note that the widest elements in the graph are the hot
-spots in CPU utilization. If we again discard the video input and UI areas, it can be see that the <strong>cv:HoughLinesProbabilistic</strong>
-is the top offender. Just to the left, it can be seen that <strong>LaneDetector::ProcessLanes</strong> is a close second. We know from our
-development of the lane detection algorithm that the ProcessLanes() functionality is not going to be offloaded as it is
-basic post processing of the lines gathered from the Hough transform.</p>
-<div class="figure" style="width: 1200px; height: auto; max-width: 100%;">
-<object data="/images/flamegraph-road-dual-cpu.svg" style="width: 1200px; height: auto; max-width: 100%;" type="image/svg+xml">
-</object>
-<p class="caption"><span class="figure_num" id="figure_1">Figure 1: </span>Dual lane CPU Flamegraph</p>
-</div>
-<p>Another way to look at our application is with a traditional callgraph. By zooming in on our area of concern, we get the
-results seen in Figure 2. Once again, excluding those paths on the right that are out-of-scope, we can clearly see that
-<strong>cv::HoughLinesProbabilistic</strong> is a great place to focus on performance improvements.</p>
-<div class="figure" style="width: 630ptpx; height: auto; max-width: 100%;">
-<object data="/images/callgraph-road-dual-cpu.svg" style="width: 630ptpx; height: auto; max-width: 100%;" type="image/svg+xml">
-</object>
-<p class="caption"><span class="figure_num" id="figure_2">Figure 2: </span>Dual lane CPU Callgraph</p>
-</div>
-</div>
-</div>
-</body></html>                </article>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-        </section><!-- /#extras -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
 
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
 
 </body>
+
 </html>

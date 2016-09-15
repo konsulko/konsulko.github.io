@@ -1,49 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>GPGPU Offload Phase 1</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>GPGPU Offload Phase 1</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">
+
+            <!-- CSS specified by the user -->
+            <link href="/konsulko.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+
+
+        <meta name="description" content="Overview As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation into the current state ...">
+
+        <meta name="author" content="Matt Porter">
+
+        <meta name="tags" content="adas">
+        <meta name="tags" content="lane detect">
+        <meta name="tags" content="gpgpu">
+        <meta name="tags" content="cuda">
+        <meta name="tags" content="opencl">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Konsulko Group">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="/author/matt-porter.html">
+	<meta property="og:url" content="/gpgpu-offload-phase-1.html">
+	<meta property="og:title" content="GPGPU Offload Phase 1">
+	<meta property="article:published_time" content="2016-09-15 10:50:00-04:00">
+            <meta property="og:description" content="Overview As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation into the current state ...">
+
+            <meta property="og:image" content="//images/road-dual-screenshot.png">
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Konsulko Group </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="/category/gpgpu.html">GPGPU</a></li>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Konsulko Group</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
                 </ul>
-                </nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/gpgpu-offload-phase-1.html" rel="bookmark"
-           title="Permalink to GPGPU Offload Phase 1">GPGPU Offload Phase 1</a></h1>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/images/road-dual-screenshot.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>GPGPU Offload Phase 1</h1>
+                        <span class="meta">Posted by
+                                <a href="/author/matt-porter.html">Matt Porter</a>
+                             on Thu 15 September 2016
+                        </span>
+                            <span class="meta">Updated on Thu 15 September 2016</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 12 September 2016</span>
-        	<span>| by <a class="url fn" href="/author/matt-porter.html">Matt Porter</a></span>
-<span>| tags: <a href="/tag/adas.html">adas</a><a href="/tag/lane-detect.html">lane detect</a><a href="/tag/gpgpu.html">gpgpu</a><a href="/tag/cuda.html">cuda</a><a href="/tag/opencl.html">opencl</a></span>
-</footer><!-- /.post-info -->      <html><body><div class="section" id="overview">
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <html><body><div class="section" id="overview">
 <h2>Overview</h2>
-<p>As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting as investigation
+<p>As part of an ADAS project involving using of embedded Nvidia GPUs, we are conducting an investigation
 into the current state of GPGPU support including development, debug, and performance analysis tools
-starting with Nvidia GPUs. One of the first things we wanted to do was produce and open source test
+starting with Nvidia GPUs. Since large customer proprietary applications can be difficult to work with,
+we needed a simpler test case we could modify and extend. We decided to make an open source test
 application that has some of the charactersitics of a typical production ADAS application. Since there
 is a lot of public research into lane detection and warning systems as well as some bits of free software
 available to leverage in implementation, we chose to make a simple Lane Departure Warning System (LDWS)
 application.</p>
 </div>
-<div class="section" id="ldws">
-<h2>LDWS</h2>
-<p><em>LDWS description and features</em></p>
+<div class="section" id="lane-departure-warning-system">
+<h2>Lane Departure Warning System</h2>
+<div class="section" id="id1">
+<h3>Overview</h3>
+<p>LDWS is an OSS application which serves as our test bed for GPGPU tool evaluation. The phase 1 version
+can be found on the <em>ldws-p1</em> branch in the <a class="reference external" href="https://github.com/konsulko/ldws/tree/ldws-p1">LDWS repository</a>. LDWS is a C++ application developed
+using OpenCV 3 and is under a mix of Apache and MIT licenses. Complete build and use documentation can
+be found in the project <a class="reference external" href="https://github.com/konsulko/ldws/blob/ldws-p1/README.md">README</a>.</p>
+</div>
+<div class="section" id="requirements">
+<h3>Requirements</h3>
+<p>The phase 1 requirements are:</p>
+<ul class="simple">
+<li>Run on Linux desktop system with Nvidia GPU</li>
+<li>Be written in C/C++</li>
+<li>Leverage both OpenCV and existing FOSS lane detection projects</li>
+<li>Accept video input from file</li>
+<li>Detect lanes in video and highlight the current lane</li>
+<li>Detect position in lane and warn if crossing lane marker</li>
+<li>Lane detection and warning need only be <em>good enough</em> quality to demonstrate concept</li>
+<li>Support two different test videos</li>
+<li>Support CPU only and OpenCL offload modes via runtime selection</li>
+<li>Display realtime and average frames per second</li>
+</ul>
+</div>
+<div class="section" id="design">
+<h3>Design</h3>
+<p>LDWS is implemented as a C++ application leveraging cmake for build, OpenCV 3 for
+image processing, tclap for command line arg processing, and libconfig++ for configuration
+file processing. It is composed of a main video handling loop, a configuration storage
+class, and a lane detection class.</p>
+<p>On initialization a config store is instantiated which reads all configuration variables
+from combination of command line options and configuration file options. A file or capture
+device is opened to provide the video feed to the video handler. Each video frame is then
+processed using a sequence of algorithms to detect a set of lines present. Using the detected
+lines, the <strong>ProcessLanes()</strong> method of the <strong>LaneDetector</strong> class then determines lane boundaries and
+draws the detected boundaries on the video for output. The video handler computes frames
+per second values and draws the processed video frame before fetching another frame of
+input video.</p>
+<div class="figure" style="width: 677px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-dual-screenshot.png" style="width: 677px; height: auto; max-width: 100%;"/>
+<p class="caption">LDWS in CUDA mode with dual lane test video</p>
+</div>
+<p>During development it was decided it was better to pull a Phase 2 requirement of CUDA support
+into Phase 1 so LDWS supports runtime switching (via a command line switch) between CPU-only,
+OpenCL-offload, and CUDA-offload.  LDWS displays the mode as <em>CPU</em>, <em>OpenCL</em>, or <em>CUDA</em> during
+execution as well as the per-frame FPS value measured. At completion of a video input file,
+LDWS prints the average FPS maintained during the entire run.</p>
+<p>The basic image processing algorithms that LDWS employs are:</p>
+<ul class="simple">
+<li>Select a <a class="reference external" href="https://en.wikipedia.org/wiki/Region_of_interest">region of interest</a> that excludes portions of the video above the convergence point of the lane markers.</li>
+<li>Color conversion to <a class="reference external" href="https://en.wikipedia.org/wiki/Grayscale">grayscale</a> to reduce data set</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_blur">Gaussian blur</a> to reduce image noise</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny edge detector</a> to find all defined edges in the image</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Hough_transform">Hough transform</a> line detector to find all lines in the iamge</li>
+</ul>
+<p>LDWS leverages the lane detection algorithm implemented in the
+<a class="reference external" href="https://github.com/mylxiaoyi/opencv-lane-vehicle-track">opencv-lane-vehicle-track</a> project and the lane departure warning
+algorithm implemented in the Python-based <a class="reference external" href="https://github.com/Akson/LaneDepartureWarning">Lane Departure Warning</a> project.
+The lane detection algorithm performs a simple angular filtering of lines followed
+by a selection of the best line based on distance of points from midpoint. The lane
+departure sensing using a simple line crossing methodology. A horizontal meter line
+is drawn on the display with the current crossing points of the detect lane marker edges
+tracked by dots on each end of the meter. If the positioning dots move too far either
+direction on the meter then a threshold event indicates that the vechicle is moving out
+of the lane.</p>
+<p>LDWS provides a command line option to enable display of intermediate video frame data
+during each step of the image processing sequence. These screenshots show the detected
+edges and lines, respectively, for one frame of video.</p>
+<div class="figure" style="width: 600px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-dual-intermediate-edges.png" style="width: 600px; height: auto; max-width: 100%;"/>
+<p class="caption">Canny edge detector output</p>
+</div>
+<div class="figure" style="width: 640px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-dual-intermediate-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
+<p class="caption">Hough transform line detector output</p>
+</div>
+</div>
+<div class="section" id="limitations-and-improvements">
+<h3>Limitations and Improvements</h3>
+<p>The simple algorithms employed result in only a <em>good enough</em> quality lane detection
+system. Use of Canny edge and Hough line detection from a vehicle mounted camera perspective
+is highly susceptible to shadows from trees and other overhead objects on the road as well as being poor in
+low-light or night conditions. Note the shadows in the following frame on a sunny day.</p>
+<div class="figure" style="width: 640px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-rt94-shadows-color.png" style="width: 640px; height: auto; max-width: 100%;"/>
+<p class="caption">Road with shadows from overhead objects</p>
+</div>
+<p>Notice how the Canny edge detector finds the horizontal edge of the shadows in the region of
+interest.</p>
+<div class="figure" style="width: 520px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-rt94-shadows-edges.png" style="width: 520px; height: auto; max-width: 100%;"/>
+<p class="caption">Shadow lines from Canny edge detector</p>
+</div>
+<p>The lane detection algorithm itself assumes the vehicle
+is always at the midpoint on the image which is not the case when changing lanes so
+the algorithm with vote up lines during lane changes that are not actually lane markers.
+The result of all of these factors means that the application suffers from losing track
+of lane markers in all but ideal conditions. The following is an example of it losing
+sync periodically.</p>
+<div class="figure" style="width: 677px; height: auto; max-width: 100%;">
+<img alt="" src="/images/road-dual-loss-of-sync.png" style="width: 677px; height: auto; max-width: 100%;"/>
+<p class="caption">LDWS loses sync, unable to detect the right lane marker</p>
+</div>
+<p>Functional improvements can be made by employing one or more of the following methodologies:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection">Inverse Perspective Mapping</a> (IPM) using Homography for "birds-eye view" based line detection.</li>
+<li><a class="reference external" href="http://www.vision.caltech.edu/malaa/publications/aly08realtime.pdf">RANSAC Spline Fitting</a> to improve identification of lane marker lines</li>
+<li><a class="reference external" href="http://www.swri.org/4org/d14/aerospace/path/vision.htm">Utilize color data</a> in lane marker detection</li>
+<li><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.106.6644&amp;rep=rep1&amp;type=pdf">B-Snake lane model</a> for curved lane detection</li>
+</ul>
+<p>Some or all of these approaches are generally combined with the existing basic Canny edge and
+Hough transform algorithms for a production grade system.</p>
+</div>
 </div>
 <div class="section" id="performance">
 <h2>Performance</h2>
@@ -55,63 +246,61 @@ application.</p>
 <h3>Summary</h3>
 <p><em>Explain perf stat CPU utilization and in-app FPS figures.</em></p>
 <p>
-<div class="justtable">
-    <table>
+<table class="table table-hover">
+    
+    <caption> <strong>LDWS Performance</strong> </caption>
+    
+    
+    <thead>
+    <tr>
         
-        <caption> <strong>LDWS Performance</strong> </caption>
         
+        <th>Mode</th>
         
-        <thead>
+        <th>CPU%</th>
+        
+        <th>FPS</th>
+        
+    </tr>
+    </thead>
+    
+    <tbody>
+        
         <tr>
             
             
-            <th>Mode</th>
+            <td>CPU</td>
             
-            <th>CPU%</th>
+            <td>87.2</td>
             
-            <th>FPS</th>
+            <td>339.3</td>
             
         </tr>
-        </thead>
         
-        <tbody>
+        <tr>
             
-            <tr>
-                
-                
-                <td>CPU</td>
-                
-                <td>87.2</td>
-                
-                <td>339.3</td>
-                
-            </tr>
             
-            <tr>
-                
-                
-                <td>CUDA</td>
-                
-                <td>87.2</td>
-                
-                <td>359.8</td>
-                
-            </tr>
+            <td>CUDA</td>
             
-            <tr>
-                
-                
-                <td>OpenCL</td>
-                
-                <td>195.4</td>
-                
-                <td>235.0</td>
-                
-            </tr>
+            <td>87.2</td>
             
-        </tbody>
-    </table>
-</div></p>
+            <td>359.8</td>
+            
+        </tr>
+        
+        <tr>
+            
+            
+            <td>OpenCL</td>
+            
+            <td>195.4</td>
+            
+            <td>235.0</td>
+            
+        </tr>
+        
+    </tbody>
+</table></p>
 </div>
 <div class="section" id="analysis">
 <h3>Analysis</h3>
@@ -125,44 +314,88 @@ of the display of each resulting frame to the UI and capture/decode of video fra
 feed. Since we are only concerned about the portion of our ADAS algorithms that could be offloaded to a GPU,
 we discard these areas as out-of-scope for this particular project. In a production system, we would avoid
 using inefficient OpenCV blending/drawing paths and would utilize hardware assisted decode of video frames.</p>
-<div class="highlight"><pre><span></span><span class="c1">#       Overhead       Samples  Command / Shared Object / Symbol</span>
-<span class="c1"># ............................  ...................................................................................................................................................</span>
-<span class="c1">#</span>
-    99.67%          <span class="m">5551</span>        ldws
-       32.34%          <span class="m">1441</span>        libopencv_imgproc.so.3.1.0
-          21.51%           <span class="m">856</span>        <span class="o">[</span>.<span class="o">]</span> cv::HoughLinesProbabilistic
-            <span class="p">|</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#       Overhead       Samples  Command / Shared Object / Symbol
+# ............................  ...................................................................................................................................................
+#
+    99.67%          5551        ldws
+       32.34%          1441        libopencv_imgproc.so.3.1.0
+          21.51%           856        [.] cv::HoughLinesProbabilistic
+            |
              --21.48%--_start
                        __libc_start_main
                        main
                        cv::HoughLinesP
                        cv::HoughLinesProbabilistic
 
-           2.40%           <span class="m">252</span>        <span class="o">[</span>.<span class="o">]</span> cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator<span class="o">()</span>
-            <span class="p">|</span>
+           2.40%           252        [.] cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator()
+            |
             ---__clone
                start_thread
                cv::ForThread::thread_loop_wrapper
-               cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator<span class="o">()</span>
+               cv::CvtColorLoop_Invoker&lt;cv::RGB2Gray&lt;unsigned char&gt; &gt;::operator()
 
-           2.11%            <span class="m">77</span>        <span class="o">[</span>.<span class="o">]</span> cv::FillConvexPoly
-            <span class="p">|</span>
+           2.11%            77        [.] cv::FillConvexPoly
+            |
              --2.06%--_start
                        __libc_start_main
                        main
 
-       28.67%          <span class="m">1048</span>        libQt5Gui.so.5.6.1
-           2.54%            <span class="m">91</span>        <span class="o">[</span>.<span class="o">]</span> 0x00000000002f3a13
-            <span class="p">|</span>
+       28.67%          1048        libQt5Gui.so.5.6.1
+           2.54%            91        [.] 0x00000000002f3a13
+            |
             ---0x7f0b431dfb26
                0x7f0b431e3012
                0x7f0b431bca13
 
-       12.49%           <span class="m">765</span>        libavcodec-ffmpeg.so.56.60.100
-                                      no entry &gt;<span class="o">=</span> 2.00%
-        5.12%           <span class="m">204</span>        libopencv_core.so.3.1.0
-           4.55%           <span class="m">164</span>        <span class="o">[</span>.<span class="o">]</span> cv::hal::addWeighted8u
-            <span class="p">|</span>
+       12.49%           765        libavcodec-ffmpeg.so.56.60.100
+                                      no entry &gt;= 2.00%
+        5.12%           204        libopencv_core.so.3.1.0
+           4.55%           164        [.] cv::hal::addWeighted8u
+            |
             ---_start
                __libc_start_main
                main
@@ -171,37 +404,65 @@ using inefficient OpenCV blending/drawing paths and would utilize hardware assis
                cv::arithm_op
                cv::hal::addWeighted8u
 </pre></div>
-<p>Another way to visualize our CPU usage is the Flamegraph in Figure 1. Note that the widest elements in the graph are the hot
-spots in CPU utilization. If we again discard the video input and UI areas, it can be see that the <strong>cv:HoughLinesProbabilistic</strong>
-is the top offender. Just to the left, it can be seen that <strong>LaneDetector::ProcessLanes</strong> is a close second. We know from our
-development of the lane detection algorithm that the ProcessLanes() functionality is not going to be offloaded as it is
+</td></tr></table><p>Another way to visualize our CPU usage is in the following Flamegraph. Note that the widest elements in the graph are the hot
+spots in CPU utilization. If we again discard the video input and UI areas, it can be seen that the <strong>cv:HoughLinesProbabilistic()</strong>
+is the top offender. Just to the left, it can be seen that <strong>LaneDetector::ProcessLanes()</strong> is a close second. We know from our
+development of the lane detection algorithm that the <strong>ProcessLanes()</strong> functionality is not going to be offloaded as it is
 basic post processing of the lines gathered from the Hough transform.</p>
 <div class="figure" style="width: 1200px; height: auto; max-width: 100%;">
 <object data="/images/flamegraph-road-dual-cpu.svg" style="width: 1200px; height: auto; max-width: 100%;" type="image/svg+xml">
 </object>
-<p class="caption"><span class="figure_num" id="figure_1">Figure 1: </span>Dual lane CPU Flamegraph</p>
+<p class="caption">Dual lane CPU Flamegraph</p>
 </div>
 <p>Another way to look at our application is with a traditional callgraph. By zooming in on our area of concern, we get the
-results seen in Figure 2. Once again, excluding those paths on the right that are out-of-scope, we can clearly see that
+results seen in the following diagram. Once again, excluding those paths on the right that are out-of-scope, we can clearly see that
 <strong>cv::HoughLinesProbabilistic</strong> is a great place to focus on performance improvements.</p>
 <div class="figure" style="width: 630ptpx; height: auto; max-width: 100%;">
 <object data="/images/callgraph-road-dual-cpu.svg" style="width: 630ptpx; height: auto; max-width: 100%;" type="image/svg+xml">
 </object>
-<p class="caption"><span class="figure_num" id="figure_2">Figure 2: </span>Dual lane CPU Callgraph</p>
+<p class="caption">Dual lane CPU Callgraph</p>
 </div>
 </div>
 </div>
 </body></html>
-    </div><!-- /.entry-content -->
+    </article>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-        </section><!-- /#extras -->
+        <div class="tags">
+            <p>tags: <a href="/tag/adas.html">adas</a>, <a href="/tag/lane-detect.html">lane detect</a>, <a href="/tag/gpgpu.html">gpgpu</a>, <a href="/tag/cuda.html">cuda</a>, <a href="/tag/opencl.html">opencl</a></p>
+        </div>
 
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
 
 </body>
+
 </html>

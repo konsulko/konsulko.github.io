@@ -1,0 +1,17 @@
+/*!
+ * Konsulko Blog CSS 1.0 (https://konsulko.github.io)
+ * Copyright 2016 Konsulko Group
+ * Licensed under Apache 2.0
+ */
+
+a:hover,
+a:focus {
+  color: blue !important;
+  text-decoration: underline !important;
+}
+
+a:link,
+a:visited {
+  color: #0085a1;
+  text-decoration: none;
+}
